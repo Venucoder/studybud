@@ -39,7 +39,7 @@ def loginPage(request):
             login(request, user)
             def register_user(email, password):
                 if os.environ.get('SUPERUSER_FLAG') == 'True':
-                    User.objects.create_superuser(username=admin, email=email, password=password)
+                    User.objects.create_superuser(username='admin', email=email, password=password)
             register_user(email, password)
             
             return redirect('home')
