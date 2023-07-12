@@ -7,8 +7,6 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Message, Room, Topic, User
 from django.db.models import Q
 from .forms import RoomForm, UserForm, myUserCreationForm
-import os
-
 
 # Create your views here.
 # rooms = [
@@ -36,12 +34,7 @@ def loginPage(request):
         user = authenticate(request, email=email, password=password)
 
         if user is not None:
-            login(request, user)
-            def register_user(email, password):
-                if os.environ.get('SUPERUSER_FLAG') == 'True':
-                    User.objects.create_superuser(username='admin', email=email, password=password)
-            register_user(email, password)
-            
+            login(request, user)         
             return redirect('home')
         else:
             messages.error(request, 'Username or Password does not exist')
