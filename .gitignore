@@ -1,0 +1,6 @@
+venv
+db.sqlite3
+
+# Local development settings
+*.sqlite3
+*.db
